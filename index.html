@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>नेहा के लिए 💌</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Hind:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fff1f4;
+    --glow: #ffd0dc;
+    --text: #4a1030;
+    --muted: #8a4a63;
+    --accent: #e0245e;
+    --on-accent: #ffffff;
+    --gold: #b8690f;
+    --line: rgba(74, 16, 48, .25);
+    --display: "Kalam", "Noto Sans Devanagari", "Segoe UI", cursive, sans-serif;
+    --body: "Hind", "Noto Sans Devanagari", "Segoe UI", system-ui, sans-serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #2b0b26; --glow: #5b1743; --text: #ffe9ef; --muted: #e9b3c5;
+      --accent: #ff5c8a; --on-accent: #2b0b26; --gold: #ffc46b; --line: rgba(255, 233, 239, .3);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #2b0b26; --glow: #5b1743; --text: #ffe9ef; --muted: #e9b3c5;
+    --accent: #ff5c8a; --on-accent: #2b0b26; --gold: #ffc46b; --line: rgba(255, 233, 239, .3);
+  }
+  html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0; height: 100%; min-height: 100%;
+    background: var(--bg);
+    background-image: radial-gradient(ellipse at 50% 30%, var(--glow) 0%, transparent 65%);
+    background-attachment: fixed;
+    color: var(--text);
+    font-family: var(--body); font-size: 1.05rem; line-height: 1.7;
+    display: flex; align-items: center; justify-content: center;
+    overflow-x: hidden;
+  }
+  main { width: 100%; max-width: 34rem; padding: 1.5rem; position: relative; z-index: 2; }
+  .step { display: none; flex-direction: column; align-items: center; text-align: center; gap: 1.1rem; }
+  .step.active { display: flex; animation: fade .6s ease both; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+  h1 {
+    font-family: var(--display); font-weight: 700; margin: 0;
+    font-size: clamp(2.1rem, 8vw, 3.4rem); line-height: 1.2;
+  }
+  .sub { color: var(--muted); margin: 0; max-width: 26rem; }
+  .row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: center; margin-top: .6rem; min-height: 4rem; }
+
+  button, .btn {
+    font-family: var(--display); font-weight: 700; font-size: 1.25rem; line-height: 1.2;
+    border-radius: 999px; padding: .7rem 1.7rem; cursor: pointer; text-decoration: none;
+    border: 2px solid var(--accent); display: inline-block; white-space: nowrap;
+  }
+  .yes, .btn { background: var(--accent); color: var(--on-accent); transform: scale(var(--grow, 1)); transition: transform .3s ease; }
+  .no { background: transparent; color: var(--text); border-color: var(--line); z-index: 5; transition: left .28s ease, top .28s ease; }
+  button:focus-visible, .btn:focus-visible, input:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+
+  .picker { display: flex; flex-direction: column; align-items: center; gap: .9rem; }
+  input[type="date"] {
+    font-family: var(--body); font-size: 1.15rem; color: var(--text); background: transparent;
+    border: 2px solid var(--line); border-radius: 14px; padding: .6rem 1rem; color-scheme: light dark;
+  }
+  .chips { display: flex; gap: .6rem; flex-wrap: wrap; justify-content: center; }
+  .chip { font-size: 1.05rem; padding: .35rem 1.1rem; background: transparent; color: var(--text); border-color: var(--line); }
+  .chip[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+  .love {
+    font-family: var(--display); font-weight: 700; margin: 0;
+    font-size: clamp(2.6rem, 12vw, 4.6rem); line-height: 1.15; color: var(--accent);
+  }
+  .love span { display: inline-block; opacity: 0; animation: pop .5s ease forwards; }
+  @keyframes pop { from { opacity: 0; filter: blur(6px); } to { opacity: 1; filter: blur(0); } }
+  .pledge { font-family: var(--display); font-size: clamp(1.35rem, 5vw, 1.8rem); line-height: 1.5; margin: .4rem 0 0; }
+  .pledge b { color: var(--gold); }
+  .shayari { font-family: var(--display); font-size: 1.2rem; line-height: 1.9; color: var(--muted); margin: .4rem 0 0; }
+  .shayari p { margin: 0 0 1rem; }
+  .fine { font-size: .95rem; color: var(--muted); margin: 0; }
+
+  .heart { position: fixed; top: -2rem; z-index: 1; pointer-events: none; animation: fall linear forwards; }
+  @keyframes fall { to { top: 110%; } }
+  @media (prefers-reduced-motion: reduce) {
+    .step.active, .love span { animation: none; opacity: 1; }
+    .no { transition: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <section class="step active" id="s1" aria-live="polite">
+    <h1>नेहा, एक बात पूछूँ?</h1>
+    <p class="sub">क्या तुम मेरे साथ एक डेट पर चलोगी? 💌</p>
+    <div class="row">
+      <button class="yes" id="yes1">हाँ, चलूँगी 💖</button>
+      <button class="no" id="no1">नहीं</button>
+    </div>
+  </section>
+
+  <section class="step" id="s2">
+    <h1>कौन सा दिन फ्री है तुम्हारा?</h1>
+    <p class="sub">जिस दिन तुम कहोगी, उस दिन मेरा सारा वक़्त तुम्हारा।</p>
+    <div class="picker">
+      <input type="date" id="date" aria-label="डेट चुनो">
+      <div class="chips" role="group" aria-label="समय चुनो">
+        <button class="chip" data-slot="दोपहर" aria-pressed="false">दोपहर</button>
+        <button class="chip" data-slot="शाम" aria-pressed="false">शाम</button>
+        <button class="chip" data-slot="रात" aria-pressed="false">रात</button>
+      </div>
+      <button class="yes" id="go2" disabled>यही दिन पक्का</button>
+    </div>
+  </section>
+
+  <section class="step" id="s3">
+    <p class="fine" id="booked"></p>
+    <h1>एक आख़िरी सवाल…<br>क्या तुम मुझसे प्यार करती हो?</h1>
+    <div class="row">
+      <button class="yes" id="yes3">हाँ, बहुत ❤️</button>
+      <button class="no" id="no3">नहीं</button>
+    </div>
+  </section>
+
+  <section class="step" id="s4">
+    <h1 class="love" id="love" aria-label="I love you Neha"></h1>
+    <p class="pledge">मैं <b>जस्सी</b>, तुमसे बहुत प्यार करता हूँ, नेहा।<br>तुम मेरी सबसे प्यारी आदत हो और सबसे ख़ूबसूरत दुआ।</p>
+    <div class="shayari">
+      <p>तेरी हँसी में मेरी सारी दुनिया बसती है,<br>तेरे बिना ये ज़िंदगी अधूरी सी लगती है।</p>
+      <p>तुझे देखता हूँ तो वक़्त ठहर सा जाता है,<br>दिल हर बार तुझ पर ही आकर रुक जाता है।</p>
+      <p>चाँद-तारे मुझे अब नहीं चाहिए,<br>बस हर जनम में तू मेरे साथ रहे, यही दुआ है।</p>
+    </div>
+    <p class="fine" id="final-date"></p>
+    <a class="btn" id="wa" target="_blank" rel="noopener">जस्सी को जवाब भेजो 💬</a>
+  </section>
+
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var chosenDate = "", chosenSlot = "";
+
+  function show(id) {
+    var all = document.querySelectorAll(".step");
+    for (var i = 0; i < all.length; i++) all[i].classList.remove("active");
+    document.getElementById(id).classList.add("active");
+    window.scrollTo(0, 0);
+  }
+
+  /* "नहीं" बटन: पकड़ में नहीं आता */
+  var noLabels = ["नहीं", "पक्का?", "फिर सोचो 😏", "ना-ना-ना 🙈", "हाथ नहीं आऊँगा!", "हाँ बोल दो 🥺"];
+
+  function makeDodger(btn, yesBtn) {
+    var moved = false, count = 0, holder = null;
+
+    function place() {
+      var w = btn.offsetWidth, h = btn.offsetHeight;
+      var vw = document.documentElement.clientWidth, vh = window.innerHeight;
+      var pad = 14, top = 56, bot = 24;
+      var cur = btn.getBoundingClientRect();
+      var yr = yesBtn.getBoundingClientRect();
+      var best = null, bestD = -1;
+      for (var i = 0; i < 40; i++) {
+        var x = pad + Math.random() * Math.max(1, vw - w - pad * 2);
+        var y = top + Math.random() * Math.max(1, vh - h - top - bot);
+        var overlap = x < yr.right + 18 && x + w > yr.left - 18 && y < yr.bottom + 18 && y + h > yr.top - 18;
+        var d = Math.hypot(x - cur.left, y - cur.top);
+        if (!overlap && d > bestD) { best = { x: x, y: y }; bestD = d; if (d > 160) break; }
+      }
+      if (!best) best = { x: pad, y: top };
+      btn.style.left = best.x + "px";
+      btn.style.top = best.y + "px";
+    }
+
+    function dodge(e) {
+      if (e && e.cancelable) e.preventDefault();
+      if (!moved) {
+        var r = btn.getBoundingClientRect();
+        holder = document.createElement("span");
+        holder.style.display = "inline-block";
+        holder.style.width = r.width + "px";
+        holder.style.height = r.height + "px";
+        btn.parentNode.insertBefore(holder, btn);
+        btn.style.position = "fixed";
+        btn.style.margin = "0";
+        btn.style.left = r.left + "px";
+        btn.style.top = r.top + "px";
+        moved = true;
+        void btn.offsetWidth;
+      }
+      count++;
+      btn.textContent = noLabels[count % noLabels.length];
+      place();
+      var g = Math.min(1 + count * 0.07, 1.45);
+      yesBtn.style.setProperty("--grow", g);
+      if (document.activeElement === btn) btn.blur();
+    }
+
+    btn.addEventListener("pointerenter", dodge);
+    btn.addEventListener("pointerdown", dodge);
+    btn.addEventListener("touchstart", dodge, { passive: false });
+    btn.addEventListener("mousedown", dodge);
+    btn.addEventListener("click", dodge);
+    btn.addEventListener("focus", dodge);
+    window.addEventListener("resize", function () { if (moved) place(); });
+  }
+
+  var yes1 = document.getElementById("yes1"), no1 = document.getElementById("no1");
+  var yes3 = document.getElementById("yes3"), no3 = document.getElementById("no3");
+  makeDodger(no1, yes1);
+  makeDodger(no3, yes3);
+
+  yes1.addEventListener("click", function () {
+    // पहले स्क्रीन पर बटन ठीक से हटाओ
+    no1.style.display = "none";
+    show("s2");
+  });
+
+  /* डेट चुनना */
+  var dateInput = document.getElementById("date"), go2 = document.getElementById("go2");
+  var t = new Date();
+  var iso = t.getFullYear() + "-" + String(t.getMonth() + 1).padStart(2, "0") + "-" + String(t.getDate()).padStart(2, "0");
+  dateInput.min = iso;
+  dateInput.addEventListener("input", function () {
+    chosenDate = dateInput.value;
+    go2.disabled = !chosenDate;
+  });
+  var chips = document.querySelectorAll(".chip");
+  Array.prototype.forEach.call(chips, function (c) {
+    c.addEventListener("click", function () {
+      var was = c.getAttribute("aria-pressed") === "true";
+      Array.prototype.forEach.call(chips, function (o) { o.setAttribute("aria-pressed", "false"); });
+      chosenSlot = was ? "" : c.getAttribute("data-slot");
+      if (!was) c.setAttribute("aria-pressed", "true");
+    });
+  });
+
+  function prettyDate() {
+    try {
+      var p = chosenDate.split("-");
+      var d = new Date(+p[0], +p[1] - 1, +p[2]);
+      return d.toLocaleDateString("hi-IN", { weekday: "long", day: "numeric", month: "long" });
+    } catch (e) { return chosenDate; }
+  }
+
+  go2.addEventListener("click", function () {
+    if (!chosenDate) return;
+    var txt = "ठीक है, " + prettyDate() + (chosenSlot ? " (" + chosenSlot + ")" : "") + " पक्का! 🗓️";
+    document.getElementById("booked").textContent = txt;
+    show("s3");
+  });
+
+  /* आख़िरी पेज */
+  function buildLove() {
+    var el = document.getElementById("love");
+    var text = "I love you Neha ❤️";
+    el.textContent = "";
+    for (var i = 0; i < text.length; i++) {
+      var s = document.createElement("span");
+      s.textContent = text[i] === " " ? "\u00a0" : text[i];
+      s.style.animationDelay = (reduce ? 0 : i * 90) + "ms";
+      el.appendChild(s);
+    }
+  }
+
+  function heart() {
+    var h = document.createElement("div");
+    h.className = "heart";
+    var pool = ["❤️", "💖", "💗", "🌹", "💕"];
+    h.textContent = pool[Math.floor(Math.random() * pool.length)];
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.fontSize = (14 + Math.random() * 22) + "px";
+    var dur = 4 + Math.random() * 4;
+    h.style.animationDuration = dur + "s";
+    document.body.appendChild(h);
+    setTimeout(function () { h.remove(); }, dur * 1000 + 200);
+  }
+
+  yes3.addEventListener("click", function () {
+    no3.style.display = "none";
+    buildLove();
+    var when = prettyDate() + (chosenSlot ? " (" + chosenSlot + ")" : "");
+    document.getElementById("final-date").textContent = "हमारी डेट: " + when + " 💞";
+    var msg = "जस्सी, मैं " + when + " को फ्री हूँ 💌 हाँ, मैं तुम्हारे साथ डेट पर चलूँगी, और मैं भी तुमसे बहुत प्यार करती हूँ ❤️ - नेहा";
+    document.getElementById("wa").href = "https://wa.me/?text=" + encodeURIComponent(msg);
+    show("s4");
+    if (!reduce) {
+      for (var i = 0; i < 24; i++) setTimeout(heart, i * 120);
+      setInterval(heart, 500);
+    }
+  });
+})();
+</script>
+</body>
+</html>
